@@ -34,9 +34,9 @@ ActiveRecord::Schema.define(version: 2022_01_01_040928) do
   end
 
   create_table "companies", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "phone_number", null: false
-    t.string "email", null: false
+    t.string "name"
+    t.string "phone_number"
+    t.string "email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
