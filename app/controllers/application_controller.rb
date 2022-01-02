@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  before_action :authenticate_user!
+  before_action :authenticate_user!, if: :use_auth?
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   private
@@ -9,5 +9,11 @@ class ApplicationController < ActionController::Base
     # deviseのUserモデルに関わるログインや新規登録などのリクエストからパラメーターを取得できるようになるメソッド
     # アカウント編集の時にnameとprofileのストロングパラメータを追加
     devise_parameter_sanitizer.permit(:account_update, keys: [:name, :phone_number, :nickname])
+  end
+
+  def use_auth?
+    unless controller_name == "tops" && action_name == "index"
+      true
+    end
   end
 end

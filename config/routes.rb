@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'tops/index'
    # それぞれ設定することにより、userとadminで個別のコントローラを使えるようになる。
   devise_for :admins, controllers: {
     sessions:      'admins/sessions',
@@ -12,5 +13,13 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
-  # root to: "blogs#index"
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
   end
+
+  devise_scope :admin do
+    post 'admins/guest_sign_in', to: 'admins/sessions#guest_sign_in'
+  end
+
+  root 'tops#index'
+end
