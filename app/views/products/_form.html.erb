@@ -1,0 +1,40 @@
+<%= form_with(model: @product, local: true) do |form| %>
+  <% if @product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @product.errors.count %>件のエラーがあります。</h2>
+      <ul>
+      <% @product.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="product_code">
+    <%= form.label :code %>
+    <%= form.text_field :code, placeholder: "商品コード" %>
+  </div>
+  <div class="product_name">
+    <%= form.label :name %>
+    <%= form.text_field :name, placeholder: "商品名" %>
+  </div>
+  <div class="product_regular_price">
+    <%= form.label :regular_price %> 
+    <%= form.number_field :regular_price, placeholder: "標準価格" %>
+  </div>
+  <div class="product_selling_price">
+    <%= form.label :selling_price %>
+    <%= form.number_field :selling_price, step: "0.2", placeholder: "売価" %>
+  </div>
+  <div class="product_cost_price">
+    <%= form.label :cost_price %>
+    <%= form.number_field :cost_price, step: "0.2", placeholder: "原価" %>
+  </div>
+  <div class="product_remarks">
+    <%= form.label :remarks %>
+    <%= form.text_field :remarks, placeholder: "備考" %>
+  </div>
+  <%= form.submit %>
+<% end %>
+
+<%= link_to 'メインメニュー', menus_path %>
+<%= link_to '商品一覧', products_path %>

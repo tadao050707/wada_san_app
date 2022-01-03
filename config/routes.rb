@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :products
   root 'tops#index'
   get '/menus', to: 'menus#index' # 「get 'menus/index'」-> menus_index_pathになる
 

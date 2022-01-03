@@ -2,9 +2,13 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!, if: :use_auth?
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  def after_sign_in_path_for(resource) 
-    # if admin?
-    menus_path
+  def after_sign_in_path_for(resource)
+    case resource
+    when User
+      menus_path
+    when Admin
+      menus_path
+    end
   end
 
   private
