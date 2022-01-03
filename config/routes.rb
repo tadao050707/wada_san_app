@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  get 'tops/index'
+  root 'tops#index'
+  get '/menus', to: 'menus#index' # 「get 'menus/index'」-> menus_index_pathになる
+
    # それぞれ設定することにより、userとadminで個別のコントローラを使えるようになる。
   devise_for :admins, controllers: {
     sessions:      'admins/sessions',
@@ -20,6 +22,4 @@ Rails.application.routes.draw do
   devise_scope :admin do
     post 'admins/guest_sign_in', to: 'admins/sessions#guest_sign_in'
   end
-
-  root 'tops#index'
 end
