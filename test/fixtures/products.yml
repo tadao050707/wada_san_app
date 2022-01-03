@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  code: 
+  name: MyString
+  remarks: MyText
+  regular_price: 1
+  selling_price: 
+  cost_price: 
+  user: one
+
+two:
+  code: 
+  name: MyString
+  remarks: MyText
+  regular_price: 1
+  selling_price: 
+  cost_price: 
+  user: two
