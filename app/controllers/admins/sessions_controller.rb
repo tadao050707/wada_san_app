@@ -4,7 +4,7 @@ class Admins::SessionsController < Devise::SessionsController
   def guest_sign_in
     admin = Admin.guest
     sign_in admin
-    redirect_to root_path, notice: 'ゲストユーザー(devise_admin)としてログインしました。'
+    redirect_to menus_path, notice: 'ゲスト管理者ユーザーとしてログインしました。'
   end
   
   # before_action :configure_sign_in_params, only: [:create]
