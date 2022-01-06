@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  get 'clients/index'
-  get 'clients/new'
-  get 'clients/edit'
   resources :clients
   resources :products
   root 'tops#index'
