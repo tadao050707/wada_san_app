@@ -1,0 +1,40 @@
+<%= form_with(model: @client, local: true) do |form| %>
+  <% if @client.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @client.errors.count %>件のエラーがあります。</h2>
+      <ul>
+      <% @client.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="client_code">
+    <%= form.label :code %>
+    <%= form.text_field :code, placeholder: "得意先コード" %>
+  </div>
+  <div class="client_name">
+    <%= form.label :name %>
+    <%= form.text_field :name, placeholder: "得意先名" %>
+  </div>
+  <div class="client_phone_number">
+    <%= form.label :phone_number %> 
+    <%= form.text_field :phone_number, placeholder: "電話番号" %>
+  </div>
+  <div class="client_fax_number">
+    <%= form.label :fax_number %>
+    <%= form.text_field :fax_number, placeholder: "FAX番号" %>
+  </div>
+  <div class="client_address">
+    <%= form.label :address %>
+    <%= form.text_field :address, placeholder: "住所" %>
+  </div>
+  <div class="client_remarks">
+    <%= form.label :remarks %>
+    <%= form.text_field :remarks, placeholder: "備考" %>
+  </div>
+  <%= form.submit %>
+<% end %>
+
+<%= link_to 'メインメニュー', menus_path %>
+<%= link_to '一覧', clients_path %>
