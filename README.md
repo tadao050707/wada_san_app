@@ -49,7 +49,7 @@ $ rails s
 
 ## ER図
 
-<img width="1175" alt="ER図 2021-12-27 21 14 19" src="https://user-images.githubusercontent.com/83388876/147471245-bf3a0f4d-8169-4e15-b3e4-7247462843af.png">
+<img width="1179" alt="ER図 2022-01-07 21 12 35" src="https://user-images.githubusercontent.com/83388876/148543384-ce36e9eb-1697-456e-b9aa-f75f5e298a29.png">
 
 ***
 <br />
