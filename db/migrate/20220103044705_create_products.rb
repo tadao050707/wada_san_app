@@ -5,8 +5,8 @@ class CreateProducts < ActiveRecord::Migration[6.1]
       t.string :name, null: false
       t.text :remarks
       t.integer :regular_price
-      t.numeric :selling_price
-      t.numeric :cost_price
+      t.float :selling_price
+      t.float :cost_price
       t.references :user, null: false, foreign_key: true
 
       t.timestamps
