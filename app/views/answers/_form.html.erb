@@ -1,5 +1,5 @@
 <!-- この記述がquestionのshow画面に表示されるコメント入力欄になります パーシャルで作成 -->
-<%= form_with(model: [question, answer]) do |form| %>
+<%= form_with(model: [question, answer], local: false) do |form| %>
   <% if answer.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(answer.errors.count, "error") %> prohibited this answer from being saved:</h2>
