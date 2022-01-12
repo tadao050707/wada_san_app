@@ -2,7 +2,10 @@
   <% answers.each do |answer| %>
     <% if answer.id.present? %>
       <li>
+      <div class="answer-content" id ="this_answer_<%= answer.id %>"></div>
         <p><%= answer.content %></p>
+        <p><%= link_to "コメント削除", question_answer_path(answer.question_id, answer.id), method: :delete, remote: true,
+                                        data: { confirm: "本当に削除しますか?"} %></p>
       </li>
     <% end %>
   <% end %>
