@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
-  get 'answers/create'
-  get 'answers/index'
-  get 'questions/index'
-  get 'questions/new'
-  get 'questions/show'
+  resources :questions do
+    resources :answers
+  end
   resources :suppliers
   resources :clients
   resources :products
