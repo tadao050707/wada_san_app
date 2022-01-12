@@ -1,0 +1,17 @@
+<div class="container">
+  <p id="notice"><%= notice %></p>
+  <div class="question-text">
+    <p><strong>タイトル</strong>：<%= @question.title %></p>
+    <p><strong>内容</strong>：<%= @question.content %></p>
+  </div>
+  <p>コメント一覧</p>
+  <!-- このanswers_areaというHTMLのidを取得して、そのdivの部分だけを更新する -->
+  <div id="answers_area">
+    <!-- 投稿されたコメント一覧をブログの詳細ページに表示するためのrender -->
+    <%= render partial: 'answers/index', locals: { answers: @answers, question: @question } %>
+  </div>
+  <!-- コメント入力欄をブログの詳細ページに表示するためのrender -->
+  <%= render partial: 'answers/form', locals: { answer: @answer, question: @question } %>
+  <%= link_to '編集', edit_question_path(@question) %>
+  <%= link_to '戻る', questions_path %>
+</div>
