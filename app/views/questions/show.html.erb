@@ -12,6 +12,5 @@
   </div>
   <!-- コメント入力欄をブログの詳細ページに表示するためのrender -->
   <%= render partial: 'answers/form', locals: { answer: @answer, question: @question } %>
-  <%= link_to '編集', edit_question_path(@question) %>
   <%= link_to '戻る', questions_path %>
 </div>
