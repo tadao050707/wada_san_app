@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'questions/index'
+  get 'questions/new'
+  get 'questions/show'
   resources :suppliers
   resources :clients
   resources :products
