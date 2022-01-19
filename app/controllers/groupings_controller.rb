@@ -9,7 +9,7 @@ class GroupingsController < ApplicationController
     @team = Team.find(current_user.team.id) # params[team:]
     unless Grouping.team_assign?(@user)
         team = current_user.groupings.select("team_id")
-        @user = User.find_by(email: params[:user][:email])
+        @user = User.find_by(email: params[:grouping][:email])
         @grouping = @user.groupings.build(team_id: @team.id)
         @grouping.save
         redirect_to team_path(@team.id), notice: "メンバーを登録しました！"     
