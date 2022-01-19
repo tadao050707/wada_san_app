@@ -21,17 +21,13 @@ class GroupingsController < ApplicationController
   def edit
   end
 
-  def update
-    if @team.update(team_params)
-      redirect_to team_path, notice: "チームを編集しました！"
-    else
-      render :edit
-    end
-  end
-
-  def show
-    @grouping = Grouping.new
-  end
+  # def update
+  #   if @team.update(team_params)
+  #     redirect_to team_path, notice: "チームを編集しました！"
+  #   else
+  #     render :edit
+  #   end
+  # end
 
   private
 
