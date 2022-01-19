@@ -102,6 +102,7 @@ ActiveRecord::Schema.define(version: 2022_01_12_092016) do
   create_table "teams", force: :cascade do |t|
     t.string "name", null: false
     t.text "remarks"
+    t.boolean "chief", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -120,14 +121,12 @@ ActiveRecord::Schema.define(version: 2022_01_12_092016) do
     t.string "name", null: false
     t.string "phone_number", null: false
     t.string "nickname", null: false
-    t.bigint "team_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["nickname"], name: "index_users_on_nickname", unique: true
     t.index ["phone_number"], name: "index_users_on_phone_number", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index ["team_id"], name: "index_users_on_team_id"
   end
 
   add_foreign_key "answers", "questions"
