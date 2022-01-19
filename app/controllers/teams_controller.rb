@@ -47,4 +47,3 @@ class TeamsController < ApplicationController
     @team = Team.find(params[:id])
   end
 end
-end
