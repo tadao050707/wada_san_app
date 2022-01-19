@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :groupings
   resources :teams
   resources :questions do
     resources :answers
