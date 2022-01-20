@@ -1,5 +1,5 @@
 class GroupingsController < ApplicationController
-  before_action :set_grouping, only: %i[show edit update]
+  before_action :set_grouping, only: %i[show destroy]
 
   def new
     @grouping = Grouping.new
@@ -14,23 +14,19 @@ class GroupingsController < ApplicationController
         @grouping.save
         redirect_to team_path(@team.id), notice: "メンバーを登録しました！"     
     else
-      redirect_to menus_path, notice: ""
+      render :new
     end
   end
 
   def edit
   end
 
-  # def update
-  #   if @team.update(team_params)
-  #     redirect_to team_path, notice: "チームを編集しました！"
-  #   else
-  #     render :edit
-  #   end
-  # end
+  def destroy
+    @grouping.destroy
+    redirect_to team_path.(@team.id), notice:"メンバーを削除しました！"
+  end
 
   private
-
   def user_params
     params.require(:user).permit(:email)
   end    

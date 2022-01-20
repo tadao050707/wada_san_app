@@ -7,11 +7,11 @@
     </tr>
   </thead>
   <tbody>
-    <% @team.grouping_users.each do |groupings| %>
+    <% @team.grouping_users.each do |g| %>
       <tr>
-        <td><%= groupings.name %></td>
-        <td><%= groupings.email %></td>
-        <td><%#= link_to "削除する", task_path(task.id), method: :delete, class: "btn btn-danger" %></td>
+        <td><%= g.name %></td>
+        <td><%= g.email %></td>
+        <td><%= link_to "削除する", grouping_path(g.id), method: :delete, class: "btn btn-danger" %></td>
       </tr>
     <% end %>
   </tbody>
