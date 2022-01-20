@@ -1,16 +1,17 @@
 <h2>メンバーのページ</h2>
-<thead>
+<table>
+  <thead>
     <tr>
       <th>名前</th>
       <th>Email</th>
     </tr>
   </thead>
   <tbody>
-    <% @groupings.each do |groupings| %>
+    <% @team.grouping_users.each do |groupings| %>
       <tr>
-        <td><%= groupings.user.name %></td>
-        <td><%= groupings.user.email %></td>
-        # <td><%= link_to "削除する", task_path(task.id), method: :delete, class: "btn btn-danger" %></td>
+        <td><%= groupings.name %></td>
+        <td><%= groupings.email %></td>
+        <td><%#= link_to "削除する", task_path(task.id), method: :delete, class: "btn btn-danger" %></td>
       </tr>
     <% end %>
   </tbody>
