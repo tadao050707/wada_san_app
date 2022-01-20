@@ -1,5 +1,5 @@
 class GroupingsController < ApplicationController
-  before_action :set_grouping, only: %i[show destroy]
+  before_action :set_grouping, only: %i[show] #destroy]
 
   def new
     @grouping = Grouping.new
@@ -8,7 +8,6 @@ class GroupingsController < ApplicationController
   def create
     @team = Team.find(current_user.team.id) # params[team:]
     unless Grouping.team_assign?(@user)
-        team = current_user.groupings.select("team_id")
         @user = User.find_by(email: params[:grouping][:email])
         @grouping = @user.groupings.build(team_id: @team.id)
         @grouping.save
@@ -22,8 +21,11 @@ class GroupingsController < ApplicationController
   end
 
   def destroy
+    @team = Team.find(current_user.team.id)
+    # @team = Team.find(params[:id])
+    @grouping = Grouping.find(params[:id])
     @grouping.destroy
-    redirect_to team_path.(@team.id), notice:"メンバーを削除しました！"
+    # redirect_to team_path.(@team.id), notice:"メンバーを削除しました！"
   end
 
   private
