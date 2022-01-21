@@ -21,9 +21,10 @@ class GroupingsController < ApplicationController
   end
 
   def destroy
+    @user = User.find(params[:id])
     @team = Team.find(current_user.team.id)
     # @team = Team.find(params[:id])
-    @grouping = @team.user.groupings.find_by(id: params[:id])
+    @grouping = @user.groupings.last
     @grouping.destroy
     # @grouping = @team.user.groupings.destroy
     # redirect_to team_path.(@team.id), notice:"メンバーを削除しました！"
