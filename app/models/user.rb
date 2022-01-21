@@ -1,6 +1,5 @@
 class User < ApplicationRecord
   has_many :groupings, dependent: :destroy
-  has_many :grouping_team,through: :teams, source: :team
   has_one :team  
   has_many :products
   has_many :questions
