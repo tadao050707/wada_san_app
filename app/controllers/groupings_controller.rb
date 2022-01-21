@@ -23,8 +23,9 @@ class GroupingsController < ApplicationController
   def destroy
     @team = Team.find(current_user.team.id)
     # @team = Team.find(params[:id])
-    @grouping = Grouping.find(params[:id])
+    @grouping = @team.user.groupings.find_by(id: params[:id])
     @grouping.destroy
+    # @grouping = @team.user.groupings.destroy
     # redirect_to team_path.(@team.id), notice:"メンバーを削除しました！"
   end
 
