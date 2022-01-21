@@ -6,5 +6,6 @@ class CreateGroupings < ActiveRecord::Migration[6.1]
 
       t.timestamps
     end
+    add_index :groupings, [:user_id, :team_id], unique: true
   end
 end
