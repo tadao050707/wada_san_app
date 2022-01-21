@@ -35,7 +35,6 @@ class TeamsController < ApplicationController
   end
 
   def show
-    
   end
 
   private  

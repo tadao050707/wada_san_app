@@ -1,0 +1,19 @@
+<h2>メンバーのページ</h2>
+<table>
+  <thead>
+    <tr>
+      <th>名前</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @team.grouping_users.each do |g| %>
+      <tr>
+        <td><%= g.name %></td>
+        <td><%= g.email %></td>
+        <td><%= link_to "削除する", grouping_path(g.id), method: :delete, class: "btn btn-danger" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
