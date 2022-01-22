@@ -1,0 +1,29 @@
+<%= form_with(model: @sale, local: true) do |form| %>
+  <% if @sale.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @sale.errors.count %>件のエラーがあります。</h2>
+      <ul>
+      <% @sale.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="sale_code">
+    <%= form.label :code %>
+    <%= form.text_field :code, placeholder: "商品コード" %>
+  </div>
+  <div class="sale_date_at">
+    <%= form.label :date_at %>
+    <%= form.text_field :date_at, placeholder: "売上日" %>
+  </div>
+  <div class="sale_inputter">
+    <%= form.label :inputter %> 
+    <%= form.number_field :inputter, placeholder: "入力者" %>
+  </div>
+ 
+  <%= form.submit %>
+<% end %>
+
+<%= link_to 'メインメニュー', menus_path %>
+<%= link_to '商品一覧', sales_path %>
