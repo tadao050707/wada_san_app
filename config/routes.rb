@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  get 'sales/index'
-  get 'sales/new'
-  get 'sales/edit'
   resources :sales
   resources :groupings
   resources :teams
