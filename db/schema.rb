@@ -93,9 +93,11 @@ ActiveRecord::Schema.define(version: 2022_01_22_233217) do
     t.date "date_at", null: false
     t.integer "inputter", null: false
     t.bigint "client_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["client_id"], name: "index_sales_on_client_id"
+    t.index ["user_id"], name: "index_sales_on_user_id"
   end
 
   create_table "suppliers", force: :cascade do |t|
@@ -149,5 +151,6 @@ ActiveRecord::Schema.define(version: 2022_01_22_233217) do
   add_foreign_key "products", "users"
   add_foreign_key "questions", "users"
   add_foreign_key "sales", "clients"
+  add_foreign_key "sales", "users"
   add_foreign_key "teams", "users"
 end
