@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_19_100458) do
+ActiveRecord::Schema.define(version: 2022_01_22_233217) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -88,6 +88,16 @@ ActiveRecord::Schema.define(version: 2022_01_19_100458) do
     t.index ["user_id"], name: "index_questions_on_user_id"
   end
 
+  create_table "sales", force: :cascade do |t|
+    t.bigint "code", null: false
+    t.date "date_at", null: false
+    t.integer "inputter", null: false
+    t.bigint "client_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["client_id"], name: "index_sales_on_client_id"
+  end
+
   create_table "suppliers", force: :cascade do |t|
     t.bigint "code", null: false
     t.string "name", null: false
@@ -138,5 +148,6 @@ ActiveRecord::Schema.define(version: 2022_01_19_100458) do
   add_foreign_key "groupings", "users"
   add_foreign_key "products", "users"
   add_foreign_key "questions", "users"
+  add_foreign_key "sales", "clients"
   add_foreign_key "teams", "users"
 end

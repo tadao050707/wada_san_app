@@ -1,9 +1,9 @@
 class CreateSales < ActiveRecord::Migration[6.1]
   def change
     create_table :sales do |t|
-      t.bigint :code
-      t.date :date_at
-      t.integer :inputter
+      t.bigint :code, null: false
+      t.date :date_at, null: false
+      t.integer :inputter, null: false
       t.references :client, null: false, foreign_key: true
 
       t.timestamps
