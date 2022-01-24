@@ -21,6 +21,7 @@ class GroupingsController < ApplicationController
   end
 
   def destroy
+    byebug
     @user = User.find(params[:id])
     @team = Team.find(current_user.team.id)
     # @team = Team.find(params[:id])
