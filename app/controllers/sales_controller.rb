@@ -1,5 +1,5 @@
 class SalesController < ApplicationController
-  before_action :set_sale, only: %i[ edit update ]
+  before_action :set_sale, only: %i[ edit update destroy ]
 
   def index
     @sales = Sale.all # .order(created_at: :desc)
@@ -41,7 +41,8 @@ class SalesController < ApplicationController
   end
 
   def destroy
-    
+    @sale.destroy
+    redirect_to sales_path, notice: "売上を削除しました！"
   end
 
   private

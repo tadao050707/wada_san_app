@@ -12,8 +12,9 @@
     <tr>
       <td><%= s.code %></td>
       <td><%= s.date_at %></td>
-      <td><%= Client.find(s.client_id).name %></td> #要修正
-      <td><%= link_to '編集', edit_sale_path(s.id) %></td>
+      <td><%= Client.find(s.client_id).name %></td> <!-- 要修正 -->
+      <td><%= link_to '編集', edit_sale_path(s.id), class: "btn btn-success" %></td>
+      <td><%= link_to "削除", sale_path(s.id), method: :delete, class: "btn btn-danger" %></td>
     </tr>
   <% end %>
 </table>
