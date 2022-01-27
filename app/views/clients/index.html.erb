@@ -4,6 +4,7 @@
 
 <table>
   <tr>
+    <th>得意先ID</th>
     <th>得意先コード</th>
     <th>得意先名</th>
     <th>電話番号</th>
@@ -13,6 +14,7 @@
   </tr>
   <% @clients.each do |c| %>
     <tr>
+      <td><%= c.id %></td>
       <td><%= c.code %></td>
       <td><%= c.name %></td>
       <td><%= c.phone_number %></td>

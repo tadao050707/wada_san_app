@@ -50,6 +50,6 @@ class SalesController < ApplicationController
   end
 
   def sale_params
-    params.require(:sale).permit(:code, :date_at, :inputter)
+    params.require(:sale).permit(:code, :date_at, :inputter, :client_id)
   end
 end
