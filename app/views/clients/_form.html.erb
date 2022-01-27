@@ -9,6 +9,7 @@
       </ul>
     </div>
   <% end %>
+  <%= link_to '新規登録', new_client_path %>
   <div class="client_code">
     <%= form.label :code %>
     <%= form.text_field :code, placeholder: "得意先コード" %>
