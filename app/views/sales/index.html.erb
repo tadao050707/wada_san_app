@@ -1,2 +1,22 @@
-<h1>Sales#index</h1>
-<p>Find me in app/views/sales/index.html.erb</p>
+<h2>売上一覧</h2>
+<p><%= notice %></p>
+<%= link_to '新規登録', new_sale_path %>
+
+<table>
+  <tr>
+    <th>売上コード</th>
+    <th>売上日</th>
+    <th>得意先</th>
+  </tr>
+  <% @sales.each do |s| %>
+    <tr>
+      <td><%= s.code %></td>
+      <td><%= s.date_at %></td>
+      <td><%= Client.find(s.client_id).name %></td> #要修正
+      <td><%= link_to '編集', edit_sale_path(s.id) %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to 'メインメニュー', menus_path %>
+
