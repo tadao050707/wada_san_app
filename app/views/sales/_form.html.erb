@@ -9,54 +9,57 @@
       </ul>
     </div>
   <% end %>
+  
   <%= link_to '新規登録', new_sale_path %>
+  
   <div class="sale_code">
     <%= form.label :code %>
-    <%= form.text_field :code, placeholder: "商品コード" %>
+    <%= form.text_field :code, placeholder: "売上コード" %>
   </div>
+  
   <div class="sale_date_at">
     <%= form.label :date_at %>
     <%= form.date_field :date_at, placeholder: "売上日" %>
   </div>
 
-  <div class="sale_date_at">
+  <div class="sale_client_id">
     <%= form.label :Client_ID %>
     <%= form.text_field :client_id, placeholder: "client_id" %>
   </div>
 
   <div class="sale_inputter">
-    <%= form.label :inputter %> 
-    <%= form.number_field :inputter, placeholder: "入力者" %>
+    <p>入力者:<%= current_user.name %></p>
   </div>
 
   <%= form.fields_for :sale_details do |sd| %>
     <strong>
       商品<%= "#{sd.index+1}" %>
     </strong>
+    
     <div class="product_name">
-      <%= sd.label :商品名 %>
-      <%= sd.text_field :@product %>
+      <p>商品名:<%= @product.name %></p>
     </div>
-    <div class="quantity">
+    
+    <div class="sd_quantity">
       <%= sd.label :個数 %>
       <%= sd.text_field :quantity %>
     </div>
-    <div class="station">
-      <%= sd.label :単価 %>
-      <%#= sd.text_field :nearest_station %>
-    </div>
-    <div class="on_foot">
-      <%= sd.label :原価 %>
-      <%#= sd.text_field :on_foot %>
-    </div>
-    <div class="on_foot">
-      <%= sd.label :金額 %>
-      <%#= sd.text_field :on_foot %>
-    </div>
   <% end %>
-  <div class="on_foot">
-      <%= form.label :合計 %>
-      <%#= form.text_field :on_foot %>
+    
+    <div class="product_selling_price">
+      <p>単価:<%= @product.selling_price %></p>
+    </div>
+    
+    <div class="product_cost_price">
+      <p>原価:<%= @product.cost_price %></p>
+    </div>
+
+    <div class="product_regular_price">
+      <p>標準価格:<%= @product.regular_price %></p>
+    </div>
+  
+    <div class="sale_total">
+  <p>合計:</p>
   </div>  
   <%= form.submit %>
 <% end %>

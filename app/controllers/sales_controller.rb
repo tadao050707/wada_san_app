@@ -13,7 +13,7 @@ class SalesController < ApplicationController
   def new
     @sale = Sale.new
     1.times { @sale.sale_details.build }
-    @product = Product.find_by(name: params[:name])
+    @product = Product.find(1)
   end
 
   def create
