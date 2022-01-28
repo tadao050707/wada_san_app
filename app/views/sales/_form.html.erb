@@ -27,9 +27,14 @@
     <%= form.text_field :client_id, placeholder: "client_id" %>
   </div>
 
+  <div class="sale_client_name">
+    <p>得意先名:<%= @client.name %></p>
+  </div>
+
   <div class="sale_inputter">
     <p>入力者:<%= current_user.name %></p>
   </div>
+
 
   <%= form.fields_for :sale_details do |sd| %>
     <strong>

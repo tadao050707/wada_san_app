@@ -13,6 +13,7 @@ class SalesController < ApplicationController
   def new
     @sale = Sale.new
     1.times { @sale.sale_details.build }
+    @client = Client.find(1)
     @product = Product.find(1)
   end
 
@@ -20,6 +21,8 @@ class SalesController < ApplicationController
     @sale = current_user.sales.build(sale_params) # salesはhas_many :sales
     # @sale = Sale.new(sale_params)
     # @sale.user_id = current_user.id
+    @product = Product.find(1)
+    byebug
     if @sale.save
       redirect_to edit_sale_path(@sale.id), notice: "売上を登録しました！"
     else
