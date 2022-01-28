@@ -29,11 +29,35 @@
     <%= form.number_field :inputter, placeholder: "入力者" %>
   </div>
 
-  <%#= f.fields_for :sale_details do |sd| %>
-    <%# sd.text_field :product_id %>
-    <%# sd.text_field :quantity %>
-
- 
+  <%= form.fields_for :sale_details do |sd| %>
+    <strong>
+      商品<%= "#{sd.index+1}" %>
+    </strong>
+    <div class="product_name">
+      <%= sd.label :商品名 %>
+      <%= sd.text_field :@product %>
+    </div>
+    <div class="quantity">
+      <%= sd.label :個数 %>
+      <%= sd.text_field :quantity %>
+    </div>
+    <div class="station">
+      <%= sd.label :単価 %>
+      <%#= sd.text_field :nearest_station %>
+    </div>
+    <div class="on_foot">
+      <%= sd.label :原価 %>
+      <%#= sd.text_field :on_foot %>
+    </div>
+    <div class="on_foot">
+      <%= sd.label :金額 %>
+      <%#= sd.text_field :on_foot %>
+    </div>
+  <% end %>
+  <div class="on_foot">
+      <%= form.label :合計 %>
+      <%#= form.text_field :on_foot %>
+  </div>  
   <%= form.submit %>
 <% end %>
 

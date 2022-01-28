@@ -12,6 +12,8 @@ class SalesController < ApplicationController
 
   def new
     @sale = Sale.new
+    1.times { @sale.sale_details.build }
+    @product = Product.find_by(name: params[:name])
   end
 
   def create
@@ -26,9 +28,10 @@ class SalesController < ApplicationController
   end
   
   def edit
+    @sale.sale_details.build
   end
 
-  def update
+  def update    
     if @sale.update(sale_params)
       redirect_to edit_sale_path(@sale.id), notice: "売上を編集しました！"
     else
@@ -51,6 +54,6 @@ class SalesController < ApplicationController
   end
 
   def sale_params
-    params.require(:sale).permit(:code, :date_at, :inputter, :client_id)
+    params.require(:sale).permit(:code, :date_at, :inputter, :client_id, sale_details_attributes: [:id, :product_id, :quantity])
   end
 end
