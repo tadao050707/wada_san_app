@@ -1,7 +1,12 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  # before_action :access_restriction(team)
   before_action :authenticate_user!, if: :use_auth?
   before_action :configure_permitted_parameters, if: :devise_controller?
+
+  # def access_restriction(team)
+  #   redirect_to menus_path if current_user.groupings.first.id != team.id
+  # end
 
   def after_sign_in_path_for(resource)
     case resource
@@ -11,6 +16,7 @@ class ApplicationController < ActionController::Base
       menus_path
     end
   end
+
 
   private
   def configure_permitted_parameters
