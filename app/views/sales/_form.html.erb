@@ -24,51 +24,57 @@
 
   <div class="sale_client_id">
     <%= form.label :Client_ID %>
-    <%= form.text_field :client_id, placeholder: "client_id" %>
+    <%= form.text_field :client_id, placeholder: "client_id" %> <!-- これを追記。パラメータでclient_idを渡すため。-->
   </div>
 
   <div class="sale_client_name">
-    <p>得意先名:<%#= @client.name %></p>
+    <%#= form.label :sale_client_name %>
+    <%#= form.text_field :client_id, id: :client_id, placeholder: "client_id" %>
   </div>
-    <%= form.label :sale_client_name %>
-    <%= form.text_field :client_id, id: :client_name %>
-    <%= form.submit %>
 
   <div class="sale_inputter">
     <p>入力者:<%= current_user.name %></p>
+    <%= form.hidden_field :inputter, value: current_user.id %> <!-- これを追記。パラメータで入力者のidを渡すため。-->
   </div>
 
 
   <%= form.fields_for :sale_details do |sd| %>
     <strong>
-      商品<%= "#{sd.index+1}" %>
+      <p>商品<%= "#{sd.index+1}" %></p>
     </strong>
-    
-    <div class="product_name">
-      <p>商品名:<%#= @product.name %></p>
-    </div>
-    
-    <div class="sd_quantity">
-      <%= sd.label :個数 %>
-      <%= sd.text_field :quantity %>
-    </div>
-  <% end %>
-    
-    <div class="product_selling_price">
-      <p>単価:<%#= @product.selling_price %></p>
-    </div>
-    
-    <div class="product_cost_price">
-      <p>原価:<%#= @product.cost_price %></p>
-    </div>
 
-    <div class="product_regular_price">
-      <p>標準価格:<%#= @product.regular_price %></p>
-    </div>
+    <% @products.each do |product| %>
+      <div class="product_name">
+        <p>商品名:<%= product.name %></p>
+      </div>
+    
+      <div class="sd_quantity">
+        <%= sd.label :個数 %>
+        <%= sd.text_field :quantity %>
+      </div>
+    
+      <div class="product_selling_price">
+        <p>単価:<%#= product.selling_price %></p>
+      </div>
+    
+      <div class="product_cost_price">
+        <p>原価:<%#= product.cost_price %></p>
+      </div>
+
+      <div class="product_regular_price">
+        <p>標準価格:<%#= product.regular_price %></p>
+      </div>
+
+      <div class="product_id">
+        <%= sd.hidden_field :product_id, value: product.id %> <!-- これを追記。パラメータでproduct_idを渡すため。-->
+      </div>
+    <% end %>
+  <% end %>
   
     <div class="sale_total">
-  <p>合計:</p>
-  </div>  
+      <p>合計:</p>
+    </div>  
+
   <%= form.submit %>
 <% end %>
 
