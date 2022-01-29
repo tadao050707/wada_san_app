@@ -13,8 +13,8 @@ class SalesController < ApplicationController
   def new
     @sale = Sale.new
     1.times { @sale.sale_details.build }
-    @client = Client.find(1)
-    @product = Product.find(1)
+    # @client = Client.find(1)
+    # @product = Product.find(1)
   end
 
   def create

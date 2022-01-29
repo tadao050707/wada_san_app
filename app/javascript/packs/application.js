@@ -11,6 +11,12 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
+import "jquery-ui";
+import jquery from "jquery";
+import "./sale"
+window.jquery = jQuery;
+window.$ = jquery;
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()

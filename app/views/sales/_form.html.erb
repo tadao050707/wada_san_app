@@ -28,8 +28,11 @@
   </div>
 
   <div class="sale_client_name">
-    <p>得意先名:<%= @client.name %></p>
+    <p>得意先名:<%#= @client.name %></p>
   </div>
+    <%= form.label :sale_client_name %>
+    <%= form.text_field :client_id, id: :client_name %>
+    <%= form.submit %>
 
   <div class="sale_inputter">
     <p>入力者:<%= current_user.name %></p>
@@ -42,7 +45,7 @@
     </strong>
     
     <div class="product_name">
-      <p>商品名:<%= @product.name %></p>
+      <p>商品名:<%#= @product.name %></p>
     </div>
     
     <div class="sd_quantity">
@@ -52,15 +55,15 @@
   <% end %>
     
     <div class="product_selling_price">
-      <p>単価:<%= @product.selling_price %></p>
+      <p>単価:<%#= @product.selling_price %></p>
     </div>
     
     <div class="product_cost_price">
-      <p>原価:<%= @product.cost_price %></p>
+      <p>原価:<%#= @product.cost_price %></p>
     </div>
 
     <div class="product_regular_price">
-      <p>標準価格:<%= @product.regular_price %></p>
+      <p>標準価格:<%#= @product.regular_price %></p>
     </div>
   
     <div class="sale_total">
