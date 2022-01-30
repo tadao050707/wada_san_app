@@ -43,38 +43,14 @@
       <p>商品<%= "#{sd.index+1}" %></p>
     </strong>
 
-    <% @products.each do |product| %>
-      <div class="product_name">
-        <p>商品名:<%= product.name %></p>
-      </div>
-    
-      <div class="sd_quantity">
-        <%= sd.label :個数 %>
-        <%= sd.text_field :quantity %>
-      </div>
-    
-      <div class="product_selling_price">
-        <p>単価:<%#= product.selling_price %></p>
-      </div>
-    
-      <div class="product_cost_price">
-        <p>原価:<%#= product.cost_price %></p>
-      </div>
+    <%= sd.collection_select(:product_id, Product.all, :id, :name, prompt: "選択してください") %>
 
-      <div class="product_regular_price">
-        <p>標準価格:<%#= product.regular_price %></p>
-      </div>
+    <div class="sd_quantity">
+      <%= sd.label :個数 %>
+      <%= sd.text_field :quantity %>
+    </div>
 
-      <div class="product_id">
-        <%= sd.hidden_field :product_id, value: product.id %> <!-- これを追記。パラメータでproduct_idを渡すため。-->
-      </div>
-    <% end %>
   <% end %>
-  
-    <div class="sale_total">
-      <p>合計:</p>
-    </div>  
-
   <%= form.submit %>
 <% end %>
 

@@ -7,14 +7,23 @@
     <th>売上コード</th>
     <th>売上日</th>
     <th>得意先</th>
+    <th>商品名</th>
+    <th>数量</th>
+    <th>合計</th>
   </tr>
-  <% @sales.each do |s| %>
+  <% @sales.each do |sale| %>
     <tr>
-      <td><%= s.code %></td>
-      <td><%= s.date_at %></td>
-      <td><%= Client.find(s.client_id).name %></td> <!-- 要修正 -->
-      <td><%= link_to '編集', edit_sale_path(s.id), class: "btn btn-success" %></td>
-      <td><%= link_to "削除", sale_path(s.id), method: :delete, class: "btn btn-danger" %></td>
+      <td><%= sale.code %></td>
+      <td><%= sale.date_at %></td>
+      <td><%= Client.find(sale.client_id).name %></td> <!-- 要修正 -->
+
+      <% sale.saled_products.each_with_index do |product, i|%>
+        <td><%= product.name %></td>
+        <td><%= sale.sale_details[i].quantity %></td>
+        <td><%= (sale.sale_details[i].quantity * product.selling_price).to_i.to_s(:delimited) %></td>
+      <% end %>
+      <td><%= link_to '編集', edit_sale_path(sale.id), class: "btn btn-success" %></td>
+      <td><%= link_to "削除", sale_path(sale.id), method: :delete, class: "btn btn-danger" %></td>
     </tr>
   <% end %>
 </table>
